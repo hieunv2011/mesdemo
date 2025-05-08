@@ -1,0 +1,9 @@
+.highcharts-range-selector {
+    z-index: 1000 !important;
+    position: absolute !important;
+    background: white;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
