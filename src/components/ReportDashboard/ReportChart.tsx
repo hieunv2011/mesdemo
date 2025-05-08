@@ -46,7 +46,7 @@ const ProductQualityChart: React.FC = () => {
     const categories = dates.map(date => new Date(date).getTime());
 
     // Tạo biểu đồ
-    Highcharts.chart('container', { // Sửa lỗi: Truyền ID chuỗi thay vì HTMLElement
+    Highcharts.chart('container', {
       chart: {
         type: 'column'
       },
@@ -67,13 +67,6 @@ const ProductQualityChart: React.FC = () => {
         title: {
           text: 'Số lượng sản phẩm'
         }
-      },
-      tooltip: {
-        formatter: function (this: Highcharts.TooltipFormatterContextObject) {
-          const total = this.point?.stackTotal ?? 0; // Sử dụng optional chaining để tránh lỗi undefined
-          const percentage = ((this.y / total) * 100).toFixed(2);
-          return `<b>${this.key}</b><br/>${this.series.name}: ${this.y} (${percentage}%)<br/>Total: ${total}`;
-        },
       },
       plotOptions: {
         column: {
