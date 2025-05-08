@@ -46,48 +46,51 @@ const ProductQualityChart: React.FC = () => {
     const categories = dates.map(date => new Date(date).getTime());
 
     // Tạo biểu đồ
-    Highcharts.chart('container', {
-      chart: {
-        type: 'column'
-      },
-      title: {
-        text: 'Sản phẩm tốt và lỗi theo ngày',
-        align: 'left'
-      },
-      xAxis: {
-        type: 'datetime',
-        categories: categories,
-        title: {
-          text: 'Ngày'
-        }
-      },
-      yAxis: {
-        allowDecimals: false,
-        min: 0,
-        title: {
-          text: 'Số lượng sản phẩm'
-        }
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal'
-        }
-      },
-      series: [
-        {
-          name: 'Sản phẩm lỗi',
-          data: badProducts,
-          stack: 'Product',
-          color: '#f5222d'
+    const container = document.getElementById('container');
+    if (container) {
+      Highcharts.chart(container, {
+        chart: {
+          type: 'column'
         },
-        {
-          name: 'Sản phẩm tốt',
-          data: goodProducts,
-          stack: 'Product',
-          color: '#52c41a'
-        }
-      ]
-    });
+        title: {
+          text: 'Sản phẩm tốt và lỗi theo ngày',
+          align: 'left'
+        },
+        xAxis: {
+          type: 'datetime',
+          categories: categories,
+          title: {
+            text: 'Ngày'
+          }
+        },
+        yAxis: {
+          allowDecimals: false,
+          min: 0,
+          title: {
+            text: 'Số lượng sản phẩm'
+          }
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal'
+          }
+        },
+        series: [
+          {
+            name: 'Sản phẩm lỗi',
+            data: badProducts,
+            stack: 'Product',
+            color: '#f5222d'
+          },
+          {
+            name: 'Sản phẩm tốt',
+            data: goodProducts,
+            stack: 'Product',
+            color: '#52c41a'
+          }
+        ]
+      });
+    }
   }, []);
 
   return (

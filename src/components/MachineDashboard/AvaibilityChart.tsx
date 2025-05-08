@@ -10,7 +10,13 @@ const AvailabilityChart: React.FC = () => {
   // Lấy dữ liệu từ websocketDataAtom
   const [websocketData] = useAtom(websocketDataAtom);
     useEffect(() => {
-      connectWebSocket("M01");
+      const handleMessage = (message: any) => {
+        console.log("Received message:", message);
+        // Xử lý dữ liệu WebSocket tại đây
+      };
+
+      connectWebSocket("M01", handleMessage);
+
       return () => {
         disconnectWebSocket();
       };
