@@ -1,10 +1,26 @@
-import React from "react";
 import LineDashboardHeader from "../components/LineDashboard/LineDashboardHeader";
 import { Row, Col } from "antd";
 import LineCircleChart from "../components/LineDashboard/LineCircleChart";
 import LineColumnChart from "../components/LineDashboard/LineColumnChart";
 
-const machineData = [
+type MachineState = "running" | "error" | "stopped";
+
+const stateColors: Record<MachineState, string> = {
+  running: "#52c41a",
+  error: "#faad14",
+  stopped: "#cf1322",
+};
+
+const machineData: {
+  lineName: string;
+  machines: {
+    name: string;
+    time: string;
+    state: MachineState;
+    circleChartData: { active: number; maintenance: number };
+    columnChartData: number[];
+  }[];
+}[] = [
   {
     lineName: "Line 01",
     machines: [
@@ -22,34 +38,12 @@ const machineData = [
         circleChartData: { active: 180, maintenance: 90 },
         columnChartData: [2, 5, 7, 3, 6, 2],
       },
-      // Thêm máy mới vào Line 01
       {
         name: "Drill Machine",
         time: "15m-Indle",
         state: "stopped",
         circleChartData: { active: 140, maintenance: 120 },
         columnChartData: [5, 6, 4, 7, 8, 3],
-      },
-      {
-        name: "Milling Machine",
-        time: "20m-Indle",
-        state: "running",
-        circleChartData: { active: 250, maintenance: 50 },
-        columnChartData: [4, 7, 5, 6, 3, 8],
-      },
-      {
-        name: "Milling Machine",
-        time: "20m-Indle",
-        state: "running",
-        circleChartData: { active: 250, maintenance: 50 },
-        columnChartData: [4, 7, 5, 6, 3, 8],
-      },
-      {
-        name: "Milling Machine",
-        time: "20m-Indle",
-        state: "running",
-        circleChartData: { active: 250, maintenance: 50 },
-        columnChartData: [4, 7, 5, 6, 3, 8],
       },
       {
         name: "Milling Machine",
@@ -77,7 +71,6 @@ const machineData = [
         circleChartData: { active: 220, maintenance: 40 },
         columnChartData: [3, 7, 5, 9, 4, 2],
       },
-      // Thêm máy mới vào Line 02
       {
         name: "Water Jet Cutter",
         time: "30m-Indle",
@@ -95,12 +88,6 @@ const machineData = [
     ],
   },
 ];
-
-const stateColors = {
-  running: "#52c41a",
-  error: "#faad14",
-  stopped: "#cf1322",
-};
 
 const LineDashboard = () => {
   return (

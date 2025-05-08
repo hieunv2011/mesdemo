@@ -4,9 +4,13 @@ import HighchartsReact from "highcharts-react-official";
 import "highcharts/highcharts-more";
 import "highcharts/highcharts-3d";
 
-const LineCircleChart: React.FC = () => {
-  const active = 210;
-  const maintenance = 60;
+interface LineCircleChartProps {
+  data: { active: number; maintenance: number };
+}
+
+const LineCircleChart: React.FC<LineCircleChartProps> = ({ data }) => {
+  const active = data.active;
+  const maintenance = data.maintenance;
   const total = active + maintenance;
   const activePercentage = ((active / total) * 100).toFixed(1) + "%";
 
@@ -48,7 +52,7 @@ const LineCircleChart: React.FC = () => {
         allowPointSelect: true,
         cursor: "pointer",
         depth: 30,
-        size:"150%",
+        size: "150%",
         innerSize: "80%",
         dataLabels: {
           enabled: false,
@@ -60,8 +64,8 @@ const LineCircleChart: React.FC = () => {
         type: "pie",
         name: "Share",
         data: [
-          { name: "Hoạt động: 210", y: active, color: "#28a745" },
-          { name: "Đang bảo trì: 60", y: maintenance, color: "#ffc107" },
+          { name: `Hoạt động: ${active}`, y: active, color: "#28a745" },
+          { name: `Đang bảo trì: ${maintenance}`, y: maintenance, color: "#ffc107" },
         ],
       },
     ],
