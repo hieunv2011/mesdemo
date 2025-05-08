@@ -33,13 +33,15 @@ const GaugeChart: React.FC = () => {
       size: "140%",
       startAngle: -90,
       endAngle: 90,
-      background: {
-        backgroundColor: "#fafafa",
-        borderRadius: 5,
-        innerRadius: "70%",
-        outerRadius: "100%",
-        shape: "arc",
-      },
+      background: [
+        {
+          backgroundColor: "#fafafa", // Đặt trong một mảng
+          borderRadius: 5,
+          innerRadius: "70%",
+          outerRadius: "100%",
+          shape: "arc",
+        },
+      ],
     },
     yAxis: {
       min: 0,
