@@ -31,7 +31,7 @@ const Uchart: React.FC = () => {
     pane: {
       startAngle: -90,
       endAngle: 89.9,
-      background: null,
+      background: [], // Sửa lỗi: Đặt thành mảng rỗng
       center: ["50%", "75%"],
       size: "110%",
     },

@@ -42,8 +42,8 @@ const StateTimelineChart: React.FC = () => {
           "{else}decelerating{/if} value of {series.points.0.y}.",
       },
     },
-    exporting:{
-        enabled: false,
+    exporting: {
+      enabled: false,
     },
     yAxis: {
       reversedStacks: false,
@@ -51,7 +51,9 @@ const StateTimelineChart: React.FC = () => {
       labels: {
         enabled: false,
       },
-      title: "",
+      title: {
+        text: "", // Đặt title là một đối tượng với text rỗng
+      },
       accessibility: {
         description: "",
       },
@@ -68,7 +70,9 @@ const StateTimelineChart: React.FC = () => {
     },
     xAxis: {
       visible: false,
-      title: "",
+      title: {
+        text: "", // Đặt title là một đối tượng với text rỗng
+      },
       accessibility: {
         description: "",
       },
@@ -78,36 +82,43 @@ const StateTimelineChart: React.FC = () => {
     },
     series: [
       {
+        type: "bar",
         name: "Initial Entry Speed",
         data: [4],
         color: "rgb(255, 7, 77)", // Màu đỏ
       },
       {
+        type: "bar",
         name: "Martian Gravity",
         data: [2],
         color: "rgb(1, 127, 250)", // Màu xanh dương
       },
       {
+        type: "bar",
         name: "Atmospheric Drag (Re-entry)",
         data: [3],
         color: "rgb(255, 165, 0)", // Màu cam
       },
       {
+        type: "bar",
         name: "Parachute Drag",
         data: [2],
         color: "rgb(0, 255, 0)", // Màu xanh lá
       },
       {
+        type: "bar",
         name: "Heat Shield Separation",
         data: [1],
         color: "rgb(0, 0, 255)", // Màu xanh dương đậm
       },
       {
+        type: "bar",
         name: "Retro Rockets (Powered decent)",
         data: [2],
         color: "rgb(255, 0, 255)", // Màu fuchsia
       },
       {
+        type: "bar",
         name: "Sky Crane Operation",
         data: [2],
         color: "rgb(139, 69, 19)", // Màu nâu

@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
 
 const ProductQualityChart: React.FC = () => {
   useEffect(() => {
-    // Dữ liệu từ máy sản xuất, tạo thêm dữ liệu cho tròn 1 tháng
+    // Dữ liệu từ máy sản xuất
     const dataOutputAndError = [
       { ngay: "2025-04-01", sanPhamTot: 120, sanPhamLoi: 50 },
       { ngay: "2025-04-02", sanPhamTot: 110, sanPhamLoi: 20 },
@@ -47,7 +46,7 @@ const ProductQualityChart: React.FC = () => {
     const categories = dates.map(date => new Date(date).getTime());
 
     // Tạo biểu đồ
-    Highcharts.chart('container', {
+    Highcharts.chart('container', { // Sửa lỗi: Truyền ID chuỗi thay vì HTMLElement
       chart: {
         type: 'column'
       },
@@ -56,7 +55,7 @@ const ProductQualityChart: React.FC = () => {
         align: 'left'
       },
       xAxis: {
-        type: 'datetime', // Cần thiết để áp dụng RangeSelector
+        type: 'datetime',
         categories: categories,
         title: {
           text: 'Ngày'
@@ -70,16 +69,15 @@ const ProductQualityChart: React.FC = () => {
         }
       },
       tooltip: {
-        formatter: function () {
-          // Tính tỷ lệ phần trăm cho mỗi điểm dữ liệu
-          const total = this.point.stackTotal;
-          const percentage = (this.y / total * 100).toFixed(2);
+        formatter: function (this: Highcharts.TooltipFormatterContextObject) {
+          const total = this.point?.stackTotal ?? 0; // Sử dụng optional chaining để tránh lỗi undefined
+          const percentage = ((this.y / total) * 100).toFixed(2);
           return `<b>${this.key}</b><br/>${this.series.name}: ${this.y} (${percentage}%)<br/>Total: ${total}`;
-        }
+        },
       },
       plotOptions: {
         column: {
-          stacking: 'normal' // Áp dụng stacking
+          stacking: 'normal'
         }
       },
       series: [
@@ -87,13 +85,13 @@ const ProductQualityChart: React.FC = () => {
           name: 'Sản phẩm lỗi',
           data: badProducts,
           stack: 'Product',
-          color: '#f5222d' // Màu đỏ cho sản phẩm lỗi
+          color: '#f5222d'
         },
         {
           name: 'Sản phẩm tốt',
           data: goodProducts,
           stack: 'Product',
-          color: '#52c41a' // Màu xanh cho sản phẩm tốt
+          color: '#52c41a'
         }
       ]
     });

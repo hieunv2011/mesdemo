@@ -1,8 +1,7 @@
 import MachineDashboardHeader from "../components/MachineDashboard/MachineDashboardHeader";
-import { Col, Row, Card, Select, Table } from "antd";
+import { Col, Row, Select, Table } from "antd";
 import machineImage from "../assets/machine.jpg";
 import GaugeChart from "../components/MachineDashboard/GaugeChart";
-import CircleChart from "../components/MachineDashboard/CircleChart";
 import MttfChart from "../components/MachineDashboard/MttfChart";
 import MtbfChart from "../components/MachineDashboard/MtbfChart";
 import AvaibilityChart from "../components/MachineDashboard/AvaibilityChart";

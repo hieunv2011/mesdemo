@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useAtom } from "jotai";
 import { websocketDataAtom } from "../stores/websocketStore";
 import { connectWebSocket, disconnectWebSocket } from "../utils/ws";

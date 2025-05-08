@@ -1,31 +1,11 @@
-import {
-  AlipayOutlined,
-  LockOutlined,
-  MobileOutlined,
-  TaobaoOutlined,
-  UserOutlined,
-  WeiboOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import {
   LoginFormPage,
   ProConfigProvider,
-  ProFormCaptcha,
   ProFormCheckbox,
   ProFormText,
 } from "@ant-design/pro-components";
-import {
-  Divider,
-  Space,
-  Tabs,
-  message,
-  theme,
-  Button,
-  Modal,
-  Input,
-} from "antd";
-// import type { CSSProperties } from "react";
-import { useState, useEffect } from "react";
+import { Divider, theme, Modal, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 
 import logo from "../../src/assets/logo.png";

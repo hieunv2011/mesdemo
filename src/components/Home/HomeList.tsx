@@ -1,4 +1,4 @@
-import { Alert, Avatar, List } from "antd";
+import { Alert, List } from "antd";
 import React from "react";
 
 const data = [

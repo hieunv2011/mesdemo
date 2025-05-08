@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import StateDashboardHeader from "../components/StateDashboard/StateDashboardHeader";
 import { Col, Row, Select, Table } from "antd";
 import machineImage from "../assets/machine.jpg";
 import StateLineChart from "../components/StateDashboard/StateLineChart";
-import StateTimelineChart from "../components/StateDashboard/StateTimeLineChart";
+import StateTimelineChart from "../components/StateDashboard/StateTimelineChart";
 const options = [
   { value: "jack", label: "KV_CL_01" },
   { value: "lucy", label: "KV_CL_02" },

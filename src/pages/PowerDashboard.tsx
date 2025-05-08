@@ -1,9 +1,8 @@
-import React from "react";
 import PowerDashboardHeader from "../components/PowerDashboard/PowerDashboradHeader";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import { Alert, Card, Col, Row, Statistic, Button, Select } from "antd";
 import machineImage from "../assets/machine.jpg";
-import Uchart from "../components/PowerDashboard/UChart";
+import Uchart from "../components/PowerDashboard/Uchart";
 import Ichart from "../components/PowerDashboard/Ichart";
 import KwhChart from "../components/PowerDashboard/KwhChart";
 import KwChart from "../components/PowerDashboard/KwChart";

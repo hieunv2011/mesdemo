@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import "./chart.css";
@@ -24,8 +24,8 @@ const EnergyChart = () => {
     xAxis: {
       type: "datetime",
       labels: {
-        formatter: function () {
-          const date = new Date(this.value);
+        formatter: function (this: Highcharts.AxisLabelsFormatterContextObject) {
+          const date = new Date(this.value); // Sửa lỗi: Ép kiểu `this`
           return date.getDate() + "/" + (date.getMonth() + 1);
         },
       },
