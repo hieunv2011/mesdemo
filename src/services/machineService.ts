@@ -2,11 +2,20 @@ import axios from "axios";
 
 const API_URL = `${import.meta.env.VITE_API_URL}/machines`;
 
+// Định nghĩa kiểu dữ liệu cho máy
+export interface Machine { // Thêm từ khóa export
+  id?: string;
+  name: string;
+  description?: string;
+  state?: "operating" | "maintenance" | "error"; // Thêm thuộc tính state nếu cần
+  [key: string]: any; // Nếu có thêm các thuộc tính khác
+}
+
 /**
  * Lấy danh sách tất cả thiết bị
- * @returns {Promise} Promise chứa danh sách thiết bị
+ * @returns {Promise<Machine[]>} Promise chứa danh sách thiết bị
  */
-export const getAllMachines = async () => {
+export const getAllMachines = async (): Promise<Machine[]> => {
   try {
     const response = await axios.get(API_URL);
     return response.data; // Trả về dữ liệu từ API
@@ -19,9 +28,9 @@ export const getAllMachines = async () => {
 /**
  * Thêm thiết bị mới
  * @param {FormData} machineData Dữ liệu thiết bị (bao gồm file nếu có)
- * @returns {Promise} Promise chứa thông tin thiết bị vừa được tạo
+ * @returns {Promise<Machine>} Promise chứa thông tin thiết bị vừa được tạo
  */
-export const createMachine = async (machineData) => {
+export const createMachine = async (machineData: FormData): Promise<Machine> => {
   try {
     const response = await axios.post(API_URL, machineData, {
       headers: {
@@ -38,10 +47,13 @@ export const createMachine = async (machineData) => {
 /**
  * Cập nhật thông tin thiết bị
  * @param {string} id ID của thiết bị cần cập nhật
- * @param {Object} machineData Dữ liệu cập nhật thiết bị
- * @returns {Promise} Promise chứa thông tin thiết bị vừa được cập nhật
+ * @param {Partial<Machine>} machineData Dữ liệu cập nhật thiết bị
+ * @returns {Promise<Machine>} Promise chứa thông tin thiết bị vừa được cập nhật
  */
-export const updateMachine = async (id, machineData) => {
+export const updateMachine = async (
+  id: string,
+  machineData: Partial<Machine>
+): Promise<Machine> => {
   try {
     const response = await axios.put(`${API_URL}/${id}`, machineData);
     return response.data; // Trả về dữ liệu từ API
@@ -54,9 +66,9 @@ export const updateMachine = async (id, machineData) => {
 /**
  * Xóa thiết bị
  * @param {string} id ID của thiết bị cần xóa
- * @returns {Promise} Promise chứa thông tin phản hồi từ API
+ * @returns {Promise<void>} Promise chứa thông tin phản hồi từ API
  */
-export const deleteMachine = async (id) => {
+export const deleteMachine = async (id: string): Promise<void> => {
   try {
     const response = await axios.delete(`${API_URL}/${id}`);
     return response.data; // Trả về dữ liệu từ API

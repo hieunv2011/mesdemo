@@ -4,13 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 import "highcharts/highcharts-more";
 import "highcharts/highcharts-3d";
 import { getAllMachines } from "../../services/machineService";
-
-// Định nghĩa kiểu dữ liệu cho máy móc
-type Machine = {
-  id: string;
-  name: string;
-  state: "operating" | "maintenance" | "error"; // Các trạng thái của máy
-};
+import type { Machine } from "../../services/machineService"; // Import kiểu Machine từ machineService
 
 const Demo: React.FC = () => {
   const [total, setTotal] = useState(0);
